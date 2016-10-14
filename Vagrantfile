@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell', inline: <<-SHELL
     apt-get update
     apt-get install -y bridge-utils vim tcpdump htop \
-        zfs-zed parted docker.io
+        zfs-zed docker.io
 
     docker pull debian
     zpool create -f tank /dev/sdc
