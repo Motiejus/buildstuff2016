@@ -28,11 +28,14 @@ all that during the talk.
 Demo
 ====
 
-    CID=$(docker run -d alpine true)
-    docker export $CID | sudo tar -C /tank/images/alpine -xfv -
-    zfs snapshot tank/images/alpine@latest
+    CID=$(docker run -d debian true)
+    docker export $CID | sudo tar -C /tank/images/debian -xfv -
+    zfs snapshot tank/images/debian@latest
     zfs list -t all
-    zfs clone tank/images/alpine@latest tank/containers/t1
+    zfs clone tank/images/debian@latest tank/containers/t1
+
+    # Get brand-new namespaces (but no chroot):
+    unshare --map-root-user --mount --net --pid --mount-proc --fork bash
 
 Links
 =====
