@@ -44,3 +44,25 @@ Links
 * http://www.slideshare.net/jpetazzo/anatomy-of-a-container-namespaces-cgroups-some-filesystem-magic-linuxcon
 * https://youtu.be/sK5i-N34im8?t=2559
 * https://docs.docker.com/engine/userguide/storagedriver/zfs-driver/
+
+Plan
+====
+
+* Motiejus @ Uber.
+* Purpuse of the talk:
+  * Disecting containers.
+  * It's just another way to execute processes.
+* Will present:
+  * Virtualization vs containerization.
+    * As far as Linux goes, there is no such thing 'container' in kernel. There
+      is a VM though.
+  * Container building blocks in detail:
+    * cgroups vs namespaces.
+    * network namespaces
+    * pid namespaces.
+    * overlay file systems.
+* Demo: create a container in shell.
+* Do not do this at home:
+  * runC
+  * libcontainer (docker)
+  * rkt
