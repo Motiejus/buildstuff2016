@@ -1,0 +1,44 @@
+Understanding and building your own Docker
+==========================================
+:author: Motiejus Jakštys
+:backend: slidy
+:max-width: 45em
+
+Agenda
+------
+
+* About me.
+
+About me
+--------
+
+Purpose of the talk
+-------------------
+
+Virtualization vs containerization
+----------------------------------
+
+Building blocks in detail
+-------------------------
+
+cgroups vs namespaces
+~~~~~~~~~~~~~~~~~~~~~
+
+network namespaces
+~~~~~~~~~~~~~~~~~~
+
+pid namespaces
+~~~~~~~~~~~~~~
+
+overlay file systems
+~~~~~~~~~~~~~~~~~~~~
+
+Do not run this at home
+-----------------------
+
+* runC
+* libcontainer (docker)
+* rkt
+
+
+// vim: set syntax=asciidoc:
