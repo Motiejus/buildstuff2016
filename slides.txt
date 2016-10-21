@@ -7,8 +7,6 @@ Understanding and building your own Docker
 Agenda
 ------
 
-* About me.
-
 About me
 --------
 
