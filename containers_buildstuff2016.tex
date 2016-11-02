@@ -85,10 +85,10 @@
     motiejus@uber.com \\
     @mo\_kelione \\
     \vspace{1em}
-    \includegraphics[height=2em]{media/svg_uberlogo.pdf}
+    \includegraphics[height=1em]{media/svg_uberlogo.pdf}
 }
 
-\date{2016-11-19}
+\date{2016-11-18}
 
 \begin{document}
 
@@ -104,16 +104,26 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Disclaimer}
-This presentation is intended to give a high level overview of the subject
-matter and is intended for discussion purposes.  This presentation is not
-intended to provide an exhaustive analysis of the subject matter and may differ
-depending on individual use cases.
+\section{Introduction}
+\begin{frame}{What shall we talk about today?}
+    We will dissect building blocks of a Linux container.
 \end{frame}
 
-\section{Introduction}
+\begin{frame}{A container in linux is ...}
+    Some bells \& whistles on top of fork/exec.
+\end{frame}
 
-\subsection{Roles of an IT organization}
+\section{Cgroups and namespaces}
+\begin{frame}{Cgroups vs namespaces}
+    \begin{description}[<+->]
+        \item[cgroups] help resource use (cpu, network, memory) fair.
+        \item[namespaces] hide things.
+    \end{description}
+\end{frame}
+
+\begin{frame}{When to use what}
+    It's probably best to use both.
+\end{frame}
 
 \section{Summary}
 \begin{frame}{Summary}
