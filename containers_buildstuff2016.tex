@@ -1,0 +1,132 @@
+% The talk was very understandable. The presentation was very clear to me. Too
+% bad the demo didn't work out as expected, it was not very clear to me what
+% the (performance) benefit was in the demo, and maybe some numbers on a slide
+% would have helped.
+
+% Improvement: the speaker could practice on not having so many stop-and-start
+% moments, realizing halfway through the talk what he was still going to say.
+ 
+
+\documentclass[14pt]{beamer}
+\usetheme{default}
+\usepackage{graphics}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{biblatex}
+\usepackage{tabularx}
+\usepackage{soul}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{fancyvrb}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri}
+
+\definecolor{awsbrown}{RGB}{247,168,13}
+\definecolor{lightgray}{RGB}{200,200,200}
+\definecolor{okgreen}{RGB}{51,153,51}
+\definecolor{okyellow}{RGB}{255,169,51}
+\setbeamercolor{title}{fg=awsbrown}
+\setbeamercolor{frametitle}{fg=awsbrown}
+\setbeamercolor{item}{fg=awsbrown}
+\setbeamercolor{navigation symbols dimmed}{fg=awsbrown}
+\setbeamercolor{navigation symbols}{fg=awsbrown}
+
+\definecolor{links}{HTML}{0000FF}
+\hypersetup{linkcolor=}
+\hypersetup{urlcolor=links} % Does not apply color to href's
+\hypersetup{colorlinks,urlcolor=links} % href's are correct, but navigation links are magenta
+
+\mode<presentation>{
+    \setbeamertemplate{navigation symbols}{
+        \insertslidenavigationsymbol
+        \insertframenavigationsymbol
+        \hspace{0.2cm}
+        \begin{minipage}[c]{0.5cm}
+            \vspace{-0.1cm}
+            {\strut\insertframenumber{}/\inserttotalframenumber\strut}
+        \end{minipage}
+    }
+}
+
+\setbeamertemplate{footline}[text line]{%
+\parbox{\linewidth}{
+\vspace*{-8pt}\color{gray}
+\textcircled{c}~2016. Uber Technologies Inc. All rights reserved.
+}}
+
+\newcommand{\framedgraphic}[2] {
+    \begin{frame}{#1}
+        \begin{center}
+            \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#2}
+        \end{center}
+    \end{frame}
+}
+
+\newcommand{\withcredits}[3]
+{
+    \begin{minipage}[t][#1\textheight]{\textwidth}
+        \vspace{5px}
+        #2
+    \end{minipage}
+    \vfill
+    \color{white}{\tiny Image source: #3}
+}
+
+%% =============================================================================
+
+\title{Building blocks of Containers}
+\author{Motiejus Jak\v{s}tys \\
+    motiejus@uber.com \\
+    @mo\_kelione \\
+    \vspace{1em}
+    \includegraphics[height=2em]{media/svg_uberlogo.pdf}
+}
+
+\date{2016-11-19}
+
+\begin{document}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Disclaimer}
+This presentation is intended to give a high level overview of the subject
+matter and is intended for discussion purposes.  This presentation is not
+intended to provide an exhaustive analysis of the subject matter and may differ
+depending on individual use cases.
+\end{frame}
+
+\section{Introduction}
+
+\subsection{Roles of an IT organization}
+
+\section{Summary}
+\begin{frame}{Summary}
+\end{frame}
+
+\begin{frame}{We're hiring!}
+    \begin{itemize}
+        \item Check out \href{http://join.uber.com}{join.uber.com}
+        \item Also, contact me at \href{mailto:motiejus@uber.com}{motiejus@uber.com}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{QA}
+\end{frame}
+
+\end{document}

@@ -2,3 +2,14 @@
 /*.log
 /.vagrant
 /*.html
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.nav
+*.out
+*.pdf
+*.run.xml
+*.snm
+*.toc
+*.vrb
