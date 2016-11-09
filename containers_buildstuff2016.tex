@@ -116,13 +116,37 @@
 \section{Cgroups and namespaces}
 \begin{frame}{Cgroups vs namespaces}
     \begin{description}[<+->]
-        \item[cgroups] help resource use (cpu, network, memory) fair.
+        \item[cgroups] help resource use fair (cpu, network, memory).
         \item[namespaces] hide things.
     \end{description}
 \end{frame}
 
 \begin{frame}{When to use what}
     It's probably best to use both.
+\end{frame}
+
+\section{namespaces}
+\subsection{Pid namespace}
+\begin{frame}{Pid namespace}
+    Hides other pids.
+    {
+        \tt unshare --pid --mount-proc --fork
+    }
+\end{frame}
+
+\subsection{Mount namespace}
+\begin{frame}{Mount namespace}
+    Hides mounts.
+    {
+        \tt unshare --mount
+    }
+\end{frame}
+
+\subsection{uid/gid mapping}
+
+\subsection{Network namespace}
+\begin{frame}{Network namespace}
+    Separate demo for this.
 \end{frame}
 
 \section{Summary}
