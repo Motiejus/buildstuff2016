@@ -103,12 +103,20 @@
 \end{frame}
 
 \section{Introduction}
+\subsection{What shall we talk about today?}
 \begin{frame}{What shall we talk about today?}
     We will dissect building blocks of a Linux container.
 \end{frame}
 
+\subsection{A container in Linux is...}
 \begin{frame}{A container in linux is ...}
-    Some bells \& whistles on top of fork/exec.
+    Fork/exec with bells \& whistles:
+    \begin{itemize}[<+(1)->]
+        \item Fancy tarball for distribution.
+        \item COW filesystem to make it start fast.
+        \item Namespaces for isolation.
+        \item Cgroups for fairness.
+    \end{itemize}
 \end{frame}
 
 \section{Cgroups and namespaces}
@@ -119,14 +127,18 @@
     \end{description}
 \end{frame}
 
-\begin{frame}{When to use what}
-    It's probably best to use both.
+\section{namespaces}
+\subsection{User mapping}
+\begin{frame}{User mapping}
+    Become root. \\
+    {
+        \tt unshare --map-root-user
+    }
 \end{frame}
 
-\section{namespaces}
 \subsection{Pid namespace}
 \begin{frame}{Pid namespace}
-    Hides other pids.
+    Hides other pids. \\
     {
         \tt unshare --pid --mount-proc --fork
     }
@@ -134,22 +146,65 @@
 
 \subsection{Mount namespace}
 \begin{frame}{Mount namespace}
-    Hides mounts.
+    Hides mounts. \\
     {
         \tt unshare --mount
     }
 \end{frame}
 
-\subsection{uid/gid mapping}
-
 \subsection{Network namespace}
 \begin{frame}{Network namespace}
-    Separate demo for this.
+    Preview demo:
+    \begin{itemize}[<+(1)->]
+        \item Create namespace.
+        \item Create loopback ({\tt lo}).
+        \item Create pair of devices {\tt veth1a} and {\tt veth1b}:
+            \begin{itemize}
+                \item {\tt veth1b} will go to the namespace.
+                \item {\tt veth1a} will stay in default.
+            \end{itemize}
+        \item Add ip addresses.
+        \item curl and ping.
+    \end{itemize}
 \end{frame}
 
-\section{Summary}
-\begin{frame}{Summary}
+\subsection{Putting it all together}
+\begin{frame}{Putting it all together}
+    Demo time!
 \end{frame}
+
+\subsection{Homework}
+\begin{frame}{Homework}
+    Some extras:
+    \begin{itemize}[<+(1)->]
+        \item Sec: no leftover file descriptors.
+        \item Sec: reduce kernel surface area.
+        \item Sec/DoS: shared kernel resources.
+        \item Resource fairness.
+        \item Supervision.
+        \item Collect zombie processes.
+        \item Image management.
+    \end{itemize}
+\end{frame}
+
+\subsection{Real homework}
+\begin{frame}{Real homework}
+    Do NOT do it yourself. \\
+    \pause
+    Pick one of the following:
+    \begin{itemize}[<+(1)->]
+        \item systemd-nspawn
+        \item rkt
+        \item runc
+        \item docker
+        \item lxc/lxd
+        \item Solaris Zones (can run Linux binaries).
+            \begin{itemize}
+                \item Worth a separate talk.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}{We're hiring!}
     \begin{itemize}
