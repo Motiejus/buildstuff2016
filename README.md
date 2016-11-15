@@ -31,13 +31,13 @@ Demo
     sudo zfs create tank/images
     sudo zfs create tank/images/debian
     CID=$(docker run -d debian true)
-    docker export $CID | sudo tar -C /tank/images/debian -xfv -
+    docker export $CID | sudo tar -C /tank/images/debian -xvf -
     zfs snapshot tank/images/debian@latest
     zfs list -t all
     zfs clone tank/images/debian@latest tank/containers/t1
 
-    # Get brand-new namespaces (but no chroot):
-    unshare --map-root-user --mount --net --pid --mount-proc --fork bash
+    # Get brand-new namespaces in the container:
+    unshare --mount --pid --fork chroot . /bin/bash
 
 Links
 =====

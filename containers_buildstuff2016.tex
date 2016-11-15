@@ -194,11 +194,31 @@
     \onslide<+(1)->{An improvement over "run and hope for the best".}
 \end{frame}
 
-\section{What are we missing?}
+\section{File systems and COW}
+\begin{frame}{File systems and COW}
+    A container:
+    \begin{itemize}[<+->]
+        \item Needs a file system.
+        \item Starts quickly regardless of size.
+    \end{itemize}
+    \pause
+    Copy On Write!
+\end{frame}
+
+\begin{frame}{A quick demo}
+    \small
+    \begin{itemize}
+        \item Create {\tt tank/images/debian@latest}
+        \item Create {\tt tank/containers/t1} from {\tt @latest}
+        \item {\tt unshare --mount --pid --fork chroot . bash}
+    \end{itemize}
+\end{frame}
+
+\section{What did we forget?}
 \subsection{Homework}
 \begin{frame}{Homework}
-    For homework:
     \begin{itemize}[<+(1)->]
+        \item Trivial to escape this "container".
         \item Sec: no leftover file descriptors.
         \item Sec: reduce kernel surface area.
         \item Sec/DoS: shared kernel resources.
@@ -209,11 +229,20 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Real homework}
-\begin{frame}{Real homework}
-    Do NOT do it yourself. \\
+\subsection{There is a market}
+\begin{frame}{There is a market for these scripts}
+    To fund writing these scripts ...
+    \begin{itemize}[<+(1)->]
+        \item Docker Inc. raised \$168M.
+        \item CoreOS Inc. raised \$48M.
+        \item There are more.
+    \end{itemize}
+\end{frame}
+
+\subsection{Real takeaways}
+\begin{frame}{Real takeaways}
     \pause
-    Pick one of the following:
+    Devil is in the details (worth MM of \$\$), better re-use:
     \begin{itemize}[<+(1)->]
         \item systemd-nspawn
         \item rkt
@@ -228,7 +257,7 @@
 \end{frame}
 
 
-\section{Thank you}
+\section{The End}
 \begin{frame}{We're hiring!}
     \begin{itemize}
         \item Check out \href{http://join.uber.com}{join.uber.com}
