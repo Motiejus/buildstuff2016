@@ -188,10 +188,10 @@
     \begin{description}[<+(1)->]
         \item[Fake root] Can apt-get, iptables, mount, nested cgroups.
         \item[Isolated pids] No need {\tt nobody}, isolate from each other.
-        \item[Isolated mounts] Probably for /mnt.
+        \item[Isolated mounts] Probably for /tmp.
         \item[Isolated network] Safely bind to {\tt :80}.
     \end{description}
-    \onslide<+(1)->{An improvement over "run and hope for the best".}
+    \onslide<+(1)->{An improvement over "run and hope there is nothing else listening".}
 \end{frame}
 
 \section{File systems and COW}
@@ -201,8 +201,8 @@
         \item Needs a file system.
         \item Starts quickly regardless of size.
     \end{itemize}
-    \pause
-    Copy On Write!
+    \visible<+->{Do not want to copy 1GB with every startup.} \\
+    \visible<+->{Copy On Write!}
 \end{frame}
 
 \begin{frame}{A quick demo}
