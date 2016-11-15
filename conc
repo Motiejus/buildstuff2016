@@ -1,19 +1,17 @@
 #!/bin/bash
 set -x
 
-NS=netns1
-
-sudo ip netns add $NS
-sudo ip netns exec $NS ip link set dev lo up
+sudo ip netns add netns1
+sudo ip netns exec netns1 ip link set dev lo up
 sudo ip link add veth1a type veth peer name veth1b
+sudo ip link set veth1b netns netns1
+sudo ip netns exec netns1 ip addr add 10.0.0.2/24 dev veth1b
+sudo ip netns exec netns1 ip link set veth1b up
+
 sudo ip link set veth1a up
 sudo ip addr add 10.0.0.1/24 dev veth1a
 
-sudo ip link set veth1b netns $NS
-sudo ip netns exec $NS ip addr add 10.0.0.2/24 dev veth1b
-sudo ip netns exec $NS ip link set veth1b up
-
-sudo ip netns exec $NS \
+sudo ip netns exec netns1 \
     sudo -u ubuntu -- \
     unshare --map-root-user \
     unshare --pid --mount-proc --fork \

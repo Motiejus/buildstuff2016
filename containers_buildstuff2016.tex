@@ -1,3 +1,12 @@
+% building blocks of linux containers.
+% create a diagram how network namespaces work
+% remember we are still a non-root? Let's apply tc.
+% add namespace stuff to the container script
+% tc qdisc add dev eth0 root netem delay 100ms
+% low ports -- nonsense
+% mounts care for /tmp
+% use COW
+
 % The talk was very understandable. The presentation was very clear to me. Too
 % bad the demo didn't work out as expected, it was not very clear to me what
 % the (performance) benefit was in the demo, and maybe some numbers on a slide
@@ -114,13 +123,13 @@
     \begin{itemize}[<+(1)->]
         \item Fancy tarball for distribution.
         \item COW filesystem to make it start fast.
-        \item Namespaces for isolation.
         \item Cgroups for fairness.
+        \item Namespaces for isolation.
     \end{itemize}
 \end{frame}
 
-\section{Cgroups and namespaces}
-\begin{frame}{Cgroups vs namespaces}
+\section{Cgroups and Namespaces}
+\begin{frame}{Cgroups vs Namespaces}
     \begin{description}[<+(1)->]
         \item[cgroups] help resource use fair (cpu, network, memory).
         \item[namespaces] hide things.
@@ -175,11 +184,6 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Putting it all together}
-\begin{frame}{Putting it all together}
-    Demo time!
-\end{frame}
-
 \subsection{What did we just do}
 \begin{frame}{What did we just do}
     \relax
@@ -188,7 +192,7 @@
         \item[Fake root] Can bind to low ports.
         \item[Isolated pids] No need {\tt nobody}.
         \item[Isolated mounts] Probably don't care.
-        \item[Isolated network] All can bind to {\tt :80}.
+        \item[Isolated network] Safely bind to {\tt :80}.
     \end{description}
     \onslide<+(1)->{An improvement over "run and hope for the best".}
 \end{frame}

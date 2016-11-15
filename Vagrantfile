@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell', inline: <<-SHELL
     apt-get update
     apt-get install -y bridge-utils vim tcpdump htop \
-        zfs-zed docker.io ubuntu-fan
+        zfs-zed docker.io ubuntu-fan python3
 
     git clone https://github.com/coreos/rkt
     cd rkt
