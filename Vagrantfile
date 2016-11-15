@@ -6,6 +6,8 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'ubuntu/xenial64'
 
   config.vm.provider 'virtualbox' do | v |
+      v.memory = 2048
+
       unless File.exist?(file_to_disk)
           v.customize [
               'createhd',

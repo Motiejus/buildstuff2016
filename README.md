@@ -28,6 +28,8 @@ all that during the talk.
 Demo
 ====
 
+    sudo zfs create tank/images
+    sudo zfs create tank/images/debian
     CID=$(docker run -d debian true)
     docker export $CID | sudo tar -C /tank/images/debian -xfv -
     zfs snapshot tank/images/debian@latest
