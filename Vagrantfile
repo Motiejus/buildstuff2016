@@ -28,10 +28,6 @@ Vagrant.configure('2') do |config|
     apt-get install -y bridge-utils vim tcpdump htop \
         zfs-zed docker.io ubuntu-fan python3
 
-    git clone https://github.com/coreos/rkt
-    cd rkt
-    ./scripts/install-rkt.sh
-
     docker pull debian
     zpool create -f tank /dev/sdc
   SHELL
