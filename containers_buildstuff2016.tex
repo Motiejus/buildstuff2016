@@ -121,38 +121,45 @@
 
 \section{Cgroups and namespaces}
 \begin{frame}{Cgroups vs namespaces}
-    \begin{description}[<+->]
+    \begin{description}[<+(1)->]
         \item[cgroups] help resource use fair (cpu, network, memory).
         \item[namespaces] hide things.
     \end{description}
 \end{frame}
 
-\section{namespaces}
-\subsection{User mapping}
+\section{Namespaces}
+\subsection{Isolation in Linux}
+\begin{frame}{We will cover}
+    \begin{itemize}[<+(1)->]
+        \item User mapping
+        \item Pid
+        \item Mount
+        \item Network
+        \item There are more, but not today.
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{User mapping}
-    Become root. \\
+    Become root in your container. \\
     {
         \tt unshare --map-root-user
     }
 \end{frame}
 
-\subsection{Pid namespace}
 \begin{frame}{Pid namespace}
-    Hides other pids. \\
+    Hide other pids. \\
     {
         \tt unshare --pid --mount-proc --fork
     }
 \end{frame}
 
-\subsection{Mount namespace}
 \begin{frame}{Mount namespace}
-    Hides mounts. \\
+    Hide container mounts. \\
     {
         \tt unshare --mount
     }
 \end{frame}
 
-\subsection{Network namespace}
 \begin{frame}{Network namespace}
     Preview demo:
     \begin{itemize}[<+(1)->]
@@ -173,9 +180,22 @@
     Demo time!
 \end{frame}
 
-\subsection{Homework}
+\subsection{What did we just do}
+\begin{frame}{What did we just do}
+    \relax
+    {\bf Created a container:}
+    \begin{description}[<+(1)->]
+        \item[Fake root] Can bind to low ports.
+        \item[Isolated pids] No need {\tt nobody}.
+        \item[Isolated mounts] Probably don't care.
+        \item[Isolated network] All can bind to {\tt :80}.
+    \end{description}
+    \onslide<+(1)->{An improvement over "run and hope for the best".}
+\end{frame}
+
+\subsection{What do we miss?}
 \begin{frame}{Homework}
-    Some extras:
+    Still missing:
     \begin{itemize}[<+(1)->]
         \item Sec: no leftover file descriptors.
         \item Sec: reduce kernel surface area.
