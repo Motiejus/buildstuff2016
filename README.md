@@ -38,7 +38,9 @@ Demo
     zfs clone tank/images/debian@latest tank/containers/t1
 
     # Get brand-new namespaces in the container:
-    unshare --mount --pid --fork chroot . /bin/bash
+    ip netns exec t1 \
+        unshare --mount --pid --fork chroot /tank/containers/t1 \
+        bash -c "mount -t proc proc /proc && exec \"${@:-bash}\""
 
 Links
 =====

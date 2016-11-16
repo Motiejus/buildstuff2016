@@ -1,19 +1,22 @@
 #!/bin/bash
 set -x
 
-sudo ip netns add t1
-sudo ip netns exec t1 ip link set dev lo up
-sudo ip link add veth1a type veth peer name veth1b
-sudo ip link set veth1b netns t1
-sudo ip netns exec t1 ip addr add 10.0.0.2/24 dev veth1b
-sudo ip netns exec t1 ip link set veth1b up
+ip netns add t1
+ip netns exec t1 ip link set dev lo up
+ip link add veth1a type veth peer name veth1b
+ip link set veth1b netns t1
+ip netns exec t1 ip addr add 10.0.0.2/24 dev veth1b
+ip netns exec t1 ip link set veth1b up
 
-sudo ip link set veth1a up
-sudo ip addr add 10.0.0.1/24 dev veth1a
+ip addr add 10.0.0.1/24 dev veth1a
+ip link set veth1a up
 
-sudo ip netns exec t1 \
-    unshare --pid --mount-proc --fork \
-    unshare --mount \
-    "${@:-bash}"
+zfs clone tank/images/debian@latest tank/containers/t1
 
-sudo ip netns del t1
+ip netns exec t1 \
+	unshare --mount --pid --fork chroot /tank/containers/t1 \
+	bash -c "mount -t proc proc /proc && exec \"${@:-bash}\""
+
+zfs destroy tank/containers/t1
+ip link del veth1a
+ip netns del t1
