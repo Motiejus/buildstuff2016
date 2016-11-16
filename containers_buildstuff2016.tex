@@ -114,7 +114,7 @@
         \item $2009-2011$ Telecom (Ops).
         \item $2011-2012$ Telecom (Dev).
         \item $2012-2014$ Online Gaming (Dev + Ops).
-        \item $2014-2016$ Amazon (Dev + Ops).
+        \item $2014-2016$ Amazon (Dev + Ops) {\tiny oncall experience}.
         \item $2016-now$ Uber (Dev + Ops):
             \begin{itemize}
                 \item From $2016.02$: Dev.
@@ -191,6 +191,7 @@
         \item curl and ping.
         \item lsof, bind on ports separately.
     \end{itemize}
+    \onslide<+(1)->{\small Ever wanted to run {\tt tcpdump} on an {\em application}?}
 \end{frame}
 
 \subsection{What did we just do}
@@ -213,8 +214,12 @@
         \item Needs a file system.
         \item Starts quickly regardless of size.
     \end{itemize}
-    \visible<+->{Do not want to copy 1GB with every startup.} \\
+
+    \visible<+->{Do not want to copy 1GB with every startup.}
+
     \visible<+->{Copy On Write!}
+
+    \visible<+->{\small lvm? zfs? btrfs?}
 \end{frame}
 
 \begin{frame}{A quick demo}
@@ -271,6 +276,9 @@
 \begin{frame}{To recap}
     \begin{itemize}[<+->]
         \item Easy to understand kernel facilities.
+            \begin{itemize}
+                \item \small pid? user? network?
+            \end{itemize}
         \item Devil is in the details.
         \item Re-use tools or spend \$MM to create yours.
     \end{itemize}
