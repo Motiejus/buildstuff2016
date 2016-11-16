@@ -40,7 +40,7 @@ Demo
     # Get brand-new namespaces in the container:
     ip netns exec t1 \
         unshare --mount --pid --fork chroot /tank/containers/t1 \
-        bash -c "mount -t proc proc /proc && exec \"${@:-bash}\""
+        bash -c "mount -t proc proc /proc && exec bash"
 
 Links
 =====

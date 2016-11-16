@@ -115,7 +115,11 @@
         \item $2011-2012$ Telecom (Dev).
         \item $2012-2014$ Online Gaming (Dev + Ops).
         \item $2014-2016$ Amazon (Dev + Ops).
-        \item $2016-now$ Uber SRE (Dev + Ops).
+        \item $2016-now$ Uber (Dev + Ops):
+            \begin{itemize}
+                \item From $2016.02$: Dev.
+                \item From $2016.11$: SRE.
+            \end{itemize}
     \end{itemize}
     \onslide<+(1)->{Got a habit to cut layers of abstraction.}
 \end{frame}
@@ -174,7 +178,7 @@
 \end{frame}
 
 \begin{frame}{Network namespace}
-    Preview demo:
+    Demonstrate this:
     \begin{itemize}[<+(1)->]
         \item Create namespace.
         \item Activate loopback ({\tt lo}).
@@ -185,6 +189,7 @@
             \end{itemize}
         \item Add ip addresses.
         \item curl and ping.
+        \item lsof, bind on ports separately.
     \end{itemize}
 \end{frame}
 
@@ -237,26 +242,24 @@
     \visible<+(1)->{Should someone else do it?}
 \end{frame}
 
-\subsection{There is a market}
-\begin{frame}{There is a market for these scripts}
-    Hell yes! There is a big market:
+\begin{frame}{Let's look at the numbers.}
+    To fund script development ...
     \begin{itemize}[<+(1)->]
-        \item CoreOS Inc. raised \$48M.
-        \item Docker Inc. raised \$168M.
-        \item There are more companies...
+        \item ... CoreOS Inc. raised \$48M.
+        \item ... Docker Inc. raised \$168M.
+        \item ... and there are more.
     \end{itemize}
-    \visible<+(1)->{... heavily funding script development.}
 \end{frame}
 
-\subsection{Real takeaways}
-\begin{frame}{Real takeaways}
+\subsection{Conclusions}
+\begin{frame}{Conclusions}
     \pause
-    Devil is in the details (worth \$MM), better re-use:
+    Devil is in the details, worth hundreds of millions of dollars. Better reuse:
     \begin{itemize}[<+(1)->]
-        \item systemd-nspawn
         \item rkt
-        \item runc
+        \item runC
         \item docker
+        \item systemd-nspawn
         \item lxc/lxd
         \item Solaris Zones (can run Linux binaries).
             \begin{itemize}
@@ -265,12 +268,11 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Conclusions}
-\begin{frame}{Conclusions}
+\begin{frame}{To recap}
     \begin{itemize}[<+->]
         \item Easy to understand kernel facilities.
         \item Devil is in the details.
-        \item Re-use tools or raise \$MM to create yours.
+        \item Re-use tools or spend \$MM to create yours.
     \end{itemize}
 \end{frame}
 
