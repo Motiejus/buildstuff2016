@@ -14,6 +14,6 @@ sudo ip addr add 10.0.0.1/24 dev veth1a
 sudo ip netns exec t1 \
     unshare --pid --mount-proc --fork \
     unshare --mount \
-    "$@"
+    "${@:-bash}"
 
 sudo ip netns del t1

@@ -109,13 +109,9 @@
 \end{frame}
 
 \section{Introduction}
-\subsection{What shall we talk about today?}
-\begin{frame}{What shall we talk about today?}
-    We will dissect building blocks of a Linux container.
-\end{frame}
-
 \subsection{A container in Linux is...}
 \begin{frame}{A container in linux is ...}
+    \pause
     Fork/exec with bells \& whistles:
     \begin{itemize}[<+(1)->]
         \item Fancy tarball for distribution.
@@ -137,7 +133,7 @@
 \subsection{Isolation in Linux}
 \begin{frame}{We will cover}
     \begin{itemize}[<+(1)->]
-        \item User mapping
+        \item User namespace
         \item Pid
         \item Mount
         \item Network
@@ -145,17 +141,10 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{User mapping}
+\begin{frame}{User namespace}
     Become root in your container. \\
     {
         \tt unshare --map-root-user
-    }
-\end{frame}
-
-\begin{frame}{Pid namespace}
-    Hide other pids. \\
-    {
-        \tt unshare --pid --mount-proc --fork
     }
 \end{frame}
 
@@ -166,11 +155,18 @@
     }
 \end{frame}
 
+\begin{frame}{Pid namespace}
+    Hide other pids. \\
+    {
+        \tt unshare --pid --mount-proc --fork
+    }
+\end{frame}
+
 \begin{frame}{Network namespace}
     Preview demo:
     \begin{itemize}[<+(1)->]
         \item Create namespace.
-        \item Create loopback ({\tt lo}).
+        \item Activate loopback ({\tt lo}).
         \item Create pair of devices {\tt veth1a} and {\tt veth1b}:
             \begin{itemize}
                 \item {\tt veth1b} will go to the namespace.
@@ -186,7 +182,7 @@
     \relax
     {\bf Created a container:}
     \begin{description}[<+(1)->]
-        \item[Fake root] Can apt-get, iptables, mount, nested cgroups.
+        \item[User namespace] apt-get, iptables, mount, etc.
         \item[Isolated pids] No need {\tt nobody}, isolate from each other.
         \item[Isolated mounts] Probably for /tmp.
         \item[Isolated network] Safely bind to {\tt :80}.
@@ -215,31 +211,30 @@
 \end{frame}
 
 \section{What did we forget?}
-\subsection{Basic Security}
-\begin{frame}{Basic Security}
+\subsection{Leftover elephants in the room}
+\begin{frame}{Leftover elephants in the room}
     \begin{itemize}[<+(1)->]
         \item Trivial to escape this "container".
         \item Sec: no leftover file descriptors.
-        \item Sec: reduce kernel surface area.
-        \item Sec/DoS: shared kernel resources.
         \item Resource fairness.
-        \item Supervision and daemonization.
+        \item Sec/DoS: shared kernel resources.
+        \item Supervision, daemonization and cleanup.
         \item Logging.
         \item Collect zombie processes.
         \item Image management.
     \end{itemize}
-    Should someone else do it?
+    \visible<+(1)->{Should someone else do it?}
 \end{frame}
 
 \subsection{There is a market}
 \begin{frame}{There is a market for these scripts}
-    Hell yes!
+    Hell yes! There is a big market:
     \begin{itemize}[<+(1)->]
-        \item Docker Inc. raised \$168M.
         \item CoreOS Inc. raised \$48M.
+        \item Docker Inc. raised \$168M.
         \item There are more.
     \end{itemize}
-    ... to fund the script development.
+    \visible<+(1)->{... to fund the script development.}
 \end{frame}
 
 \subsection{Real takeaways}
@@ -259,6 +254,14 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Conclusions}
+\begin{frame}{Conclusions}
+    \begin{itemize}[<+->]
+        \item Easy to understand kernel facilities.
+        \item Devil is in the details.
+        \item Re-use or raise millions of dollars to create yours.
+    \end{itemize}
+\end{frame}
 
 \section{The End}
 \begin{frame}{We're hiring!}

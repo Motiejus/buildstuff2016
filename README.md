@@ -30,6 +30,7 @@ Demo
 
     sudo zfs create tank/images
     sudo zfs create tank/images/debian
+    sudo zfs create tank/containers
     CID=$(docker run -d debian true)
     docker export $CID | sudo tar -C /tank/images/debian -xvf -
     zfs snapshot tank/images/debian@latest
