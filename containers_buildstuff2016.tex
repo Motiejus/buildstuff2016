@@ -7,10 +7,37 @@
 % bad the demo didn't work out as expected, it was not very clear to me what
 % the (performance) benefit was in the demo, and maybe some numbers on a slide
 % would have helped.
-
+%
 % Improvement: the speaker could practice on not having so many stop-and-start
 % moments, realizing halfway through the talk what he was still going to say.
- 
+
+% To begin with, I would like to start with the conclusions. Devil hides in the
+% detail. And those details are worth hundreds of millions of dollars.
+
+% And now let's dive deep into this. A lot of people use Docker/rkt (how many
+% of you?), but very often we do not have time to actually understand how they
+% work. So today in half-hour I will show you in a nutshell how that works. My
+% hope is that even after you know how to build a container engine, I can still
+% convince you that the existing tools are worth spending $MM to create and use.
+
+% End: I created, but look at my conclusions again.
+
+% 22.40
+% Jau is esmes gali pristatyti, bet, pataisius detales, bus daug patraukliau ;)
+% Patiko pradzia apie tavo patirti
+% Pradzioj – tai ka tu is esmes pasakosi/darysi ir kodel tai man gali buti aktualu?
+% Daug teksto, kuris yra toks pat ir skaidrej, ir tu ji atkartoji
+% Uzsirasyk KONKRECIUS pavyzdzius, ka typinsi!! Kad tikrai veiktu!
+% Pasiimk lazeriuka?
+% Del nuolatinio typinimo prarandi kontakta su publika
+% Pasakyk, ka darysi ir ko tikiesi. O tada pasakyk, kad «va, taip ir gavom«  (cia apie visus kodinimus)
+% Didele dali paskaitos galvojau, bet gi as kodus galiu susirasti internete – man reikia daugiau izvalgu !
+% Neatsidusk taip, tarsi butum pavarges ar butu nuobodu :P
+% Ar suderintos tech galimybes ?
+% Tai kokia isvada?
+% Conclusions neatitinka turini – cia future suggestions.
+% 23.15
+
 \documentclass[14pt]{beamer}
 \usetheme{default}
 \usepackage{graphics}
@@ -109,12 +136,12 @@
 \section{Introduction}
 \subsection{Why me}
 \begin{frame}{Why me}
-    My resume:
+    My resume: {\tiny oncall experience.}
     \begin{itemize}
         \item $2009-2011$ Telecom (Ops).
         \item $2011-2012$ Telecom (Dev).
         \item $2012-2014$ Online Gaming (Dev + Ops).
-        \item $2014-2016$ Amazon (Dev + Ops) {\tiny oncall experience}.
+        \item $2014-2016$ Amazon (Dev + Ops).
         \item $2016-now$ Uber (Dev + Ops):
             \begin{itemize}
                 \item From $2016.02$: Dev.
@@ -122,6 +149,18 @@
             \end{itemize}
     \end{itemize}
     \onslide<+(1)->{Got a habit to cut layers of abstraction.}
+\end{frame}
+
+\subsection{Conclusion}
+\begin{frame}{Conclusion}
+    \pause
+    Devil Hides in The Details.
+    \pause
+    \begin{itemize}
+        \item Many use Docker.
+        \item We lack time to understand.
+        \item Tools are worth investing to.
+    \end{itemize}
 \end{frame}
 
 \subsection{A container in Linux is...}
@@ -134,14 +173,6 @@
         \item Cgroups for fairness.
         \item Namespaces for isolation.
     \end{itemize}
-\end{frame}
-
-\section{Cgroups and Namespaces}
-\begin{frame}{Cgroups vs Namespaces}
-    \begin{description}[<+(1)->]
-        \item[cgroups] help resource use fair (cpu, network, memory).
-        \item[namespaces] hide things.
-    \end{description}
 \end{frame}
 
 \section{Namespaces}
@@ -157,7 +188,7 @@
 \end{frame}
 
 \begin{frame}{User namespace}
-    Become root in your container. \\
+    Become container-local root. \\
     {
         \tt unshare --map-root-user
     }
@@ -247,39 +278,45 @@
     \visible<+(1)->{Should someone else do it?}
 \end{frame}
 
-\begin{frame}{Let's look at the numbers.}
-    To fund script development ...
+\begin{frame}{We almost have a container engine}
     \begin{itemize}[<+(1)->]
-        \item ... CoreOS Inc. raised \$48M.
-        \item ... Docker Inc. raised \$168M.
-        \item ... and there are more.
+        \item But look at my conclusions again.
+        \item Devil hides in the details.
+        \item Tooling companies (Docker, CoreOS, etc) raised $>\$10^8$.
     \end{itemize}
 \end{frame}
 
-\subsection{Conclusions}
-\begin{frame}{Conclusions}
-    \pause
-    Devil is in the details, worth hundreds of millions of dollars. Better reuse:
-    \begin{itemize}[<+(1)->]
-        \item rkt
-        \item runC
-        \item docker
-        \item systemd-nspawn
-        \item lxc/lxd
-        \item Solaris Zones (can run Linux binaries).
-            \begin{itemize}
-                \item Worth a separate talk.
-            \end{itemize}
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Let's look at the numbers.}
+%    To fund script development ...
+%    \begin{itemize}[<+(1)->]
+%        \item ... CoreOS Inc. raised \$48M.
+%        \item ... Docker Inc. raised \$168M.
+%        \item ... and there are more.
+%    \end{itemize}
+%\end{frame}
+%
+%\subsection{Conclusions}
+%\begin{frame}{Conclusions}
+%    \pause
+%    Devil hides in the details, worth hundreds of millions of dollars. Better
+%    reuse:
+%    \begin{itemize}[<+(1)->]
+%        \item rkt
+%        \item runC
+%        \item docker
+%        \item systemd-nspawn
+%        \item lxc/lxd
+%        \item Solaris Zones (can run Linux binaries).
+%            \begin{itemize}
+%                \item Worth a separate talk.
+%            \end{itemize}
+%    \end{itemize}
+%\end{frame}
 
 \begin{frame}{To recap}
     \begin{itemize}[<+->]
         \item Easy to understand kernel facilities.
-            \begin{itemize}
-                \item \small pid? user? network?
-            \end{itemize}
-        \item Devil is in the details.
+        \item Devil hides in the details.
         \item Re-use tools or spend \$MM to create yours.
     \end{itemize}
 \end{frame}
