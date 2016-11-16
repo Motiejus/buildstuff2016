@@ -2,8 +2,6 @@
 % remember we are still a non-root? Let's apply tc.
 % add namespace stuff to the container script
 % tc qdisc add dev eth0 root netem delay 100ms
-% mounts care for /tmp
-% use COW
 
 % The talk was very understandable. The presentation was very clear to me. Too
 % bad the demo didn't work out as expected, it was not very clear to me what
@@ -133,10 +131,10 @@
 \subsection{Isolation in Linux}
 \begin{frame}{We will cover}
     \begin{itemize}[<+(1)->]
-        \item User namespace
-        \item Pid
-        \item Mount
-        \item Network
+        \item User namespaces.
+        \item Pid namespaces.
+        \item Mount namespaces.
+        \item Network namespaces.
         \item There are more, but not today.
     \end{itemize}
 \end{frame}
@@ -183,11 +181,11 @@
     {\bf Created a container:}
     \begin{description}[<+(1)->]
         \item[User namespace] apt-get, iptables, mount, etc.
-        \item[Isolated pids] No need {\tt nobody}, isolate from each other.
-        \item[Isolated mounts] Probably for /tmp.
-        \item[Isolated network] Safely bind to {\tt :80}.
+        \item[Isolated pids] no {\tt nobody}, isolate from each other.
+        \item[Isolated mounts] e.g. for /tmp.
+        \item[Isolated network] safely bind to {\tt :80}.
     \end{description}
-    \onslide<+(1)->{An improvement over "run and hope there is nothing else listening".}
+    \onslide<+(1)->{An improvement over "run and hope it doesn't affect anything else".}
 \end{frame}
 
 \section{File systems and COW}
@@ -232,15 +230,15 @@
     \begin{itemize}[<+(1)->]
         \item CoreOS Inc. raised \$48M.
         \item Docker Inc. raised \$168M.
-        \item There are more.
+        \item There are more companies...
     \end{itemize}
-    \visible<+(1)->{... to fund the script development.}
+    \visible<+(1)->{... heavily funding script development.}
 \end{frame}
 
 \subsection{Real takeaways}
 \begin{frame}{Real takeaways}
     \pause
-    Devil is in the details (worth MM of \$\$), better re-use:
+    Devil is in the details (worth \$MM), better re-use:
     \begin{itemize}[<+(1)->]
         \item systemd-nspawn
         \item rkt
@@ -259,7 +257,7 @@
     \begin{itemize}[<+->]
         \item Easy to understand kernel facilities.
         \item Devil is in the details.
-        \item Re-use or raise millions of dollars to create yours.
+        \item Re-use tools or raise \$MM to create yours.
     \end{itemize}
 \end{frame}
 
