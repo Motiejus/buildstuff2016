@@ -53,6 +53,7 @@
 \definecolor{uberblack}{RGB}{9,9,26}
 \definecolor{uberwhite}{RGB}{192,192,200}
 \definecolor{uberblue}{RGB}{31,186,214}
+\definecolor{darkgreen}{RGB}{32,96,32}
 \setbeamercolor{title}{fg=uberblue}
 \setbeamercolor{frametitle}{fg=uberblue}
 \setbeamercolor{item}{fg=uberblue}
@@ -214,6 +215,24 @@
         \item lsof, bind on ports separately.
     \end{itemize}
     \onslide<+(1)->{\small Ever wanted to run {\tt tcpdump} on an {\em application}?}
+\end{frame}
+
+\begin{frame}{Network namespace}
+    \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
+        \begin{tikzpicture}
+            \visible<+->{
+                \filldraw[fill=yellow!10] (0,0) rectangle +(4,4) node[below left] { default };
+                \filldraw[fill=white] (.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=darkgreen] { \bf \small lo \\ \bf \small 127.0.0.1 };
+            }
+            \visible<+->{
+                \filldraw[fill=yellow!10] (5,0) rectangle +(4,4) node[below left] { t1 };
+                \filldraw[fill=white] (5.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=red] { \bf \small lo \\ };
+            }
+            \visible<+->{
+                \filldraw[fill=white] (5.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=darkgreen] { \bf \small lo \\ \bf \small 127.0.0.1 };
+            }
+        \end{tikzpicture}
+    \end{adjustbox}
 \end{frame}
 
 \subsection{What did we just do}
