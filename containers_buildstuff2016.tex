@@ -3,16 +3,8 @@
 % add namespace stuff to the container script
 % tc qdisc add dev eth0 root netem delay 100ms
 
-% The talk was very understandable. The presentation was very clear to me. Too
-% bad the demo didn't work out as expected, it was not very clear to me what
-% the (performance) benefit was in the demo, and maybe some numbers on a slide
-% would have helped.
-%
-% Improvement: the speaker could practice on not having so many stop-and-start
-% moments, realizing halfway through the talk what he was still going to say.
-
 % To begin with, I would like to start with the conclusions. Devil hides in the
-% detail. And those details are worth hundreds of millions of dollars.
+% details. And those details are worth hundreds of millions of dollars.
 
 % And now let's dive deep into this. A lot of people use Docker/rkt (how many
 % of you?), but very often we do not have time to actually understand how they
@@ -138,8 +130,7 @@
 \begin{frame}{Why me}
     My resume: {\tiny oncall experience.}
     \begin{itemize}
-        \item $2009-2011$ Telecom (Ops).
-        \item $2011-2012$ Telecom (Dev).
+        \item $2009-2012$ Telecom (Dev + Ops).
         \item $2012-2014$ Online Gaming (Dev + Ops).
         \item $2014-2016$ Amazon (Dev + Ops).
         \item $2016-now$ Uber (Dev + Ops):
@@ -148,18 +139,18 @@
                 \item From $2016.11$: SRE.
             \end{itemize}
     \end{itemize}
-    \onslide<+(1)->{Got a habit to cut layers of abstraction.}
+    \onslide<+(1)->{I had to understand how exactly infrastructure works.}
 \end{frame}
 
-\subsection{Conclusion}
-\begin{frame}{Conclusion}
+\subsection{Conclusion!}
+\begin{frame}{Conclusion!}
     \pause
-    Devil Hides in The Details.
-    \pause
-    \begin{itemize}
+    Devil Hides in The Details\only<+>{.}\only<+->{?}
+    \begin{itemize}[<+->]
         \item Many use Docker.
         \item We lack time to understand.
-        \item Tools are worth investing to.
+        \item Make container engine in 30 minutes.
+        \item Details! \onslide<+->{$\rightarrow$ You will still pick existing tools.}
     \end{itemize}
 \end{frame}
 
@@ -323,6 +314,9 @@
 
 \section{The End}
 \begin{frame}{We're hiring!}
+    \pause
+    Uber SRE locations: SF, NYC, Seattle, Vilnius.
+    \pause
     \begin{itemize}
         \item Check out \href{http://join.uber.com}{join.uber.com}
         \item Also, contact me at \href{mailto:motiejus@uber.com}{motiejus@uber.com}
