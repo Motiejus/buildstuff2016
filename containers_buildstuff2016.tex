@@ -136,6 +136,7 @@
         \item We lack time to understand.
             \begin{itemize}
                 \item You need to understand infra to successfully troubleshoot infra.
+                \item There are trade-offs in the configuration.
             \end{itemize}
         \item Make container engine in 30 minutes.
         \item Details! \onslide<+->{$\rightarrow$ You will still pick existing tools.}
@@ -239,7 +240,7 @@
                 \filldraw[fill=white] (2.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1a) { \small veth1a \\ };
                 \filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1b) { \small veth1b \\ };
                 \draw[=,line width=.5mm] (veth1a.east) -- (veth1b.west);
-                \filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1b) { \small veth1b \\ };
+                %\filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1b) { \small veth1b \\ };
             }
             \visible<+->{
                 \filldraw[fill=white] (2.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] { \small veth1a \\ \small 10.0.0.1 };
