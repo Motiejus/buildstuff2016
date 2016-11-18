@@ -221,18 +221,29 @@
 \end{frame}
 
 \begin{frame}{Network namespace}
-    \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
+    \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
         \begin{tikzpicture}
             \visible<+->{
-                \filldraw[fill=yellow!10] (0,0) rectangle +(4,4) node[below left] { default };
-                \filldraw[fill=white] (.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=darkgreen] { \bf \small lo \\ \bf \small 127.0.0.1 };
+                \filldraw[fill=yellow!10] (0,0) rectangle +(4,5) node[below left] { default };
+                \filldraw[fill=white] (.5,.5) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] {\small lo \\ \small 127.0.0.1 };
+                \filldraw[fill=white] (-.5,2) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] {\small eth0 \\ \small 192.0.2.1 };
             }
             \visible<+->{
-                \filldraw[fill=yellow!10] (5,0) rectangle +(4,4) node[below left] { t1 };
-                \filldraw[fill=white] (5.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=red] { \bf \small lo \\ };
+                \filldraw[fill=yellow!10] (6,0) rectangle +(4,5) node[below left] { t1 };
+                \filldraw[fill=white] (5.5,.5) rectangle +(2,1.2) node[below left,align=right,text=red] { \small lo \\ };
             }
             \visible<+->{
-                \filldraw[fill=white] (5.5,.5) rectangle +(2.2,1.2) node[below left,align=right,text=darkgreen] { \bf \small lo \\ \bf \small 127.0.0.1 };
+                \filldraw[fill=white] (5.5,.5) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] { \small lo \\ \small 127.0.0.1 };
+            }
+            \visible<+->{
+                \filldraw[fill=white] (2.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1a) { \small veth1a \\ };
+                \filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1b) { \small veth1b \\ };
+                \draw[=,line width=.5mm] (veth1a.east) -- (veth1b.west);
+                \filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=red] (veth1b) { \small veth1b \\ };
+            }
+            \visible<+->{
+                \filldraw[fill=white] (2.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] { \small veth1a \\ \small 10.0.0.1 };
+                \filldraw[fill=white] (5.5,2.5) rectangle +(2,1.2) node[below left,align=right,text=darkgreen] { \small veth1b \\ \small 10.0.0.2 };
             }
         \end{tikzpicture}
     \end{adjustbox}
