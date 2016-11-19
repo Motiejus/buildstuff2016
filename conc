@@ -1,22 +1,36 @@
 #!/bin/bash
+# echo commands
 set -x
 
-ip netns add t1
-ip netns exec t1 ip link set dev lo up
-ip link add veth1a type veth peer name veth1b
-ip link set veth1b netns t1
-ip netns exec t1 ip addr add 10.0.0.2/24 dev veth1b
-ip netns exec t1 ip link set veth1b up
-
-ip addr add 10.0.0.1/24 dev veth1a
-ip link set veth1a up
-
-zfs clone tank/images/debian@latest tank/containers/t1
-
-ip netns exec t1 \
-	unshare --mount --pid --fork chroot /tank/containers/t1 \
-	bash -c "mount -t proc proc /proc && exec \"${@:-bash}\""
-
-zfs destroy tank/containers/t1
-ip link del veth1a
-ip netns del t1
+## create namespace t1
+#ip netns add t1
+## bring loopback up
+#ip netns exec t1 ip link set dev lo up
+## add a pair of connected interfaces
+#ip link add veth1a type veth peer name veth1b
+## put veth1b into the namespace
+#ip link set veth1b netns t1
+## assign an IP address to the NIC in the namespace
+#ip netns exec t1 ip addr add 10.0.0.2/24 dev veth1b
+## activate NIC in the namespace
+#ip netns exec t1 ip link set veth1b up
+##
+## assign an IP address to the NIC outside namespace
+#ip addr add 10.0.0.1/24 dev veth1a
+## activate the NIC outside namespace
+#ip link set veth1a up
+##
+## shallow-copy debian container to /tank/containers/t1
+#zfs clone tank/images/debian@latest tank/containers/t1
+##
+## execute in namespace. enter pid, mount namespaces.
+## mount proc, exec bash
+##ip netns exec t1 bash
+#ip netns exec t1 \
+#	unshare --mount --pid --fork chroot /tank/containers/t1 \
+#	bash -c "mount -t proc proc /proc && exec bash"
+##
+## destroy the container image
+#zfs destroy tank/containers/t1
+## delete the network namespace
+#ip netns del t1
