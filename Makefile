@@ -16,4 +16,4 @@ distclean: clean
 	rm -f $(PROJECT).pdf
 
 media/svg_%.pdf: media/%.svg
-	inkscape $(PWD)/$< --export-pdf=$(PWD)/$@
+	inkscape $< --export-pdf=$@
